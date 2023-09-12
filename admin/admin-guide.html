@@ -1,0 +1,782 @@
+<!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
+<!--  Last Published: Tue Sep 12 2023 05:24:04 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="632ff0c7692e31ffe94d4e70" data-wf-site="6259a92a800588a137655151">
+<head>
+  <meta charset="utf-8">
+  <title>Admin Guide</title>
+  <meta content="A guide for maintenance, support, and expansion of RGOC.com." name="description">
+  <meta content="Admin Guide" property="og:title">
+  <meta content="A guide for maintenance, support, and expansion of RGOC.com." property="og:description">
+  <meta content="Admin Guide" property="twitter:title">
+  <meta content="A guide for maintenance, support, and expansion of RGOC.com." property="twitter:description">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="../css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="../css/resurrectiongoc.webflow.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic","Oswald:200,300,400,500,600,700","Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic","Roboto Condensed:300,300italic,regular,italic,700,700italic:cyrillic,cyrillic-ext,greek,greek-ext,latin,latin-ext,vietnamese"]  }});</script>
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="../images/webclip.png" rel="apple-touch-icon">
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-223478663-1"></script>
+  <script type="text/javascript">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-223478663-1', {'anonymize_ip': false});</script>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-N0FSX42E9L"></script>
+  <script type="text/javascript">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('set', 'developer_id.dZGVlNj', true);gtag('config', 'G-N0FSX42E9L');</script><!--  js-cookie  -->
+  <script defer="" src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" integrity="sha256-0H3Nuz3aug3afVbUlsu12Puxva3CP4EhJtPExqs54Vg=" crossorigin="anonymous">
+document.onReady(){  
+let liveStreamStatus = Cookie.get("livestream") ||= "false";
+console.log("liveStreamStatus", liveStreamStatus);
+let liveStreamToggleSwitch = document.getElementById('live-stream-toggle-switch');
+  if(liveStreamToggleSwitch){
+	liveStreamToggleSwitch.addEventListener('click', toggleLiveStreamBanner);
+  }
+function toggleLiveStreamBanner() {
+  /* unhide livestream banner */
+  let liveStreamBanner = document.getElementById("live-stream-banner");
+  if (if liveStreamBanner && liveStreamBanner.display === "none") {
+    liveStreamBanner.style.display = "block";
+    liveStreamStatus = Cookie.set("livestream", "true");
+  } else if (!liveStreamBanner ||
+    liveStreamBanner.display === "block" ||
+    liveStreamBanner.display === "inline"
+  ) {
+    liveStreamBanner.style.display = "none";
+    liveStreamStatus = Cookie.set("livestream", "false");
+  }
+}
+}
+// webflow livestream data attribute
+// var elem = $("[livestream='false']");
+</script>
+  <!--  https://material.io/resources/icons/?style=baseline
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet"> -->
+  <!--  https://material.io/resources/icons/?style=outline 
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined"
+      rel="stylesheet">  -->
+  <!--  https://material.io/resources/icons/?style=round
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round"
+      rel="stylesheet">  -->
+  <!--  https://material.io/resources/icons/?style=sharp 
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp"
+      rel="stylesheet">  -->
+  <!--  user feedback
+<script defer src="https://www.userdetective.com/embed.js" data-uuid="2f8e38bb-d461-4db0-9068-a6e42f529905" ></script>
+ -->
+  <!--  feedback form fix
+<script>
+// iframe
+document.onload(){
+  document.querySelector("#user-detective").style.zIndex="300";
+};
+</script>
+ -->
+  <!--  <script src="https://apps.elfsight.com/p/platform.js" defer></script>  -->
+  <!-- <script async src="http://localhost:1234/app.js"></script>  -->
+  <!--  https://material.io/resources/icons/?style=twotone
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons+Two+Tone"
+      rel="stylesheet">  -->
+  <!-- 
+<script>
+    :root {
+    --font-from-0: 12;
+    --font-to-0: 16;
+    --vw-from-0: calc(1 / 100);
+    --vw-to-0: calc(479 / 100);
+    --coefficient-0: calc((var(--font-to-0) - var(--font-from-0)) / (var(--vw-to-0) - var(--vw-from-0)));
+    --base-0: calc((var(--font-from-0) - var(--vw-from-0) * var(--coefficient-0)) / 16);
+    --font-from-1: 14;
+    --font-to-1: 16;
+    --vw-from-1: calc(479 / 100);
+    --vw-to-1: calc(1440 / 100);
+    --coefficient-1: calc((var(--font-to-1) - var(--font-from-1)) / (var(--vw-to-1) - var(--vw-from-1)));
+    --base-1: calc((var(--font-from-1) - var(--vw-from-1) * var(--coefficient-1)) / 16);
+    --font-from-2: 16;
+    --font-to-2: 18;
+    --vw-from-2: calc(1440 / 100);
+    --vw-to-2: calc(1920 / 100);
+    --coefficient-2: calc((var(--font-to-2) - var(--font-from-2)) / (var(--vw-to-2) - var(--vw-from-2)));
+    --base-2: calc((var(--font-from-2) - var(--vw-from-2) * var(--coefficient-2)) / 16);
+    --font-from-3: 18;
+    --font-to-3: 20;
+    --vw-from-3: calc(1920 / 100);
+    --vw-to-3: calc(2400 / 100);
+    --coefficient-3: calc((var(--font-to-3) - var(--font-from-3)) / (var(--vw-to-3) - var(--vw-from-3)));
+    --base-3: calc((var(--font-from-3) - var(--vw-from-3) * var(--coefficient-3)) / 16);
+  }
+  html { font-size: calc(var(--base-3) * 1rem + var(--coefficient-3) * 1vw); }
+  @media screen and (max-width:1920px) { html { font-size: calc(var(--base-2) * 1rem + var(--coefficient-2) * 1vw); } }
+  @media screen and (max-width:1440px) { html { font-size: calc(var(--base-1) * 1rem + var(--coefficient-1) * 1vw); } }
+  @media screen and (max-width:479px) { html { font-size: calc(var(--base-0) * 1rem + var(--coefficient-0) * 1vw); } }
+</script>
+ -->
+  <style>  :root {
+    --font-from-0: 14;
+    --font-to-0: 16;
+    --vw-from-0: calc(1 / 100);
+    --vw-to-0: calc(479 / 100);
+    --coefficient-0: calc((var(--font-to-0) - var(--font-from-0)) / (var(--vw-to-0) - var(--vw-from-0)));
+    --base-0: calc((var(--font-from-0) - var(--vw-from-0) * var(--coefficient-0)) / 16);
+    --font-from-1: 16;
+    --font-to-1: 18;
+    --vw-from-1: calc(479 / 100);
+    --vw-to-1: calc(1440 / 100);
+    --coefficient-1: calc((var(--font-to-1) - var(--font-from-1)) / (var(--vw-to-1) - var(--vw-from-1)));
+    --base-1: calc((var(--font-from-1) - var(--vw-from-1) * var(--coefficient-1)) / 16);
+    --font-from-2: 18;
+    --font-to-2: 20;
+    --vw-from-2: calc(1440 / 100);
+    --vw-to-2: calc(1920 / 100);
+    --coefficient-2: calc((var(--font-to-2) - var(--font-from-2)) / (var(--vw-to-2) - var(--vw-from-2)));
+    --base-2: calc((var(--font-from-2) - var(--vw-from-2) * var(--coefficient-2)) / 16);
+    --font-from-3: 20;
+    --font-to-3: 22;
+    --vw-from-3: calc(1920 / 100);
+    --vw-to-3: calc(2400 / 100);
+    --coefficient-3: calc((var(--font-to-3) - var(--font-from-3)) / (var(--vw-to-3) - var(--vw-from-3)));
+    --base-3: calc((var(--font-from-3) - var(--vw-from-3) * var(--coefficient-3)) / 16);
+  }
+  html { font-size: calc(var(--base-3) * 1rem + var(--coefficient-3) * 1vw); }
+  @media screen and (max-width:1920px) { html { font-size: calc(var(--base-2) * 1rem + var(--coefficient-2) * 1vw); } }
+  @media screen and (max-width:1440px) { html { font-size: calc(var(--base-1) * 1rem + var(--coefficient-1) * 1vw); } }
+  @media screen and (max-width:479px) { html { font-size: calc(var(--base-0) * 1rem + var(--coefficient-0) * 1vw); } }
+</style>
+  <!-- <script async src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script> -->
+  <!-- HTML header script  -->
+  <!-- <script src="https://unpkg.com/feedbackfin@^1" defer></script> -->
+  <!-- 
+<script>
+  window.feedbackfin = { config: {}, ...window.feedbackfin };
+  window.feedbackfin.config.url = "https://rowy-hooks.run.app/wh/...";
+</script>
+ -->
+  <script async="" src="https://kit.fontawesome.com/003ab4ac55.js" crossorigin="anonymous"></script>
+  <!--  [Attributes by Finsweet] Custom favicon by page  -->
+  <script defer="" src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-favcustom@1/favcustom.js"></script>
+  <!--  Main Scrollbar Styling  -->
+  <style>
+/*width*/
+::-webkit-scrollbar {
+width:auto;
+}
+/*track*/
+::-webkit-scrollbar-track {
+border-width:2px;
+border-style:solid;
+border-color:rgb(128, 128, 128);
+border-radius:5px;
+}
+/*thumb*/
+::-webkit-scrollbar-thumb {
+background:rgb(0, 101, 121);
+border-width:2px;
+border-style:solid;
+box-shadow:rgb(0, 0, 0) 4px 4px 50px 4px;
+}
+/*thumb hover*/
+::-webkit-scrollbar-thumb:hover {
+box-shadow: 1px 1px rgba(251, 251, 251, 1);
+}
+/*thumb pressed*/
+::-webkit-scrollbar-thumb:active {
+box-shadow: 4px 4px 50px 4px;
+}
+</style>
+  <!--  GF Scrollbar Styling
+<style>
+/*width*/
+::-webkit-scrollbar {
+width:auto;
+}
+/*track*/
+::-webkit-scrollbar-track {
+border-width:2px;
+border-style:solid;
+border-color:rgb(128, 128, 128);
+border-radius:5px;
+}
+/*thumb*/
+::-webkit-scrollbar-thumb {
+background:rgb(15, 61, 152);
+border-width:2px;
+border-style:solid;
+box-shadow:rgb(0, 0, 0) 4px 4px 50px 4px;
+}
+/*thumb hover*/
+::-webkit-scrollbar-thumb:hover {
+box-shadow: 1px 1px rgba(251, 251, 251, 1);
+}
+/*thumb pressed*/
+::-webkit-scrollbar-thumb:active {
+box-shadow: 4px 4px 50px 4px;
+}
+</style>
+- -->
+  <!--  [Attributes by Finsweet] Powerful Rich Text  -->
+  <script defer="" src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-richtext@1/richtext.js"></script>
+  <script>
+const Car = {
+  brand:"Suzuki",
+  color:"white",
+  price:10000
+}
+let TodoList = {
+		"tasks": ["]
+}
+let taskEls = document.querySelector(".w-checkbox-input");
+console.log("taskEls", taskEls);
+window.localStorage.setItem('car', JSON.stringify(Car));
+</script>
+</head>
+<body fs-richtext-element="rich-text" fs-richtext-component="test">
+  <div>
+    <a href="#hero" class="top-link">↑</a>
+    <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-4 w-nav">
+      <div>
+        <a href="#" class="brand-3 w-nav-brand">
+          <h1 class="site-name">RGOC Editor Onboarding</h1>
+        </a>
+      </div>
+      <div class="div-block-22">
+        <a href="#getting-started" class="link">Start</a>
+        <a href="#cms" class="link">Know</a>
+        <a href="#writing-editing" class="link">Create</a>
+      </div>
+    </div>
+    <div class="dark-section-wrapper intro">
+      <h1 class="h1-large">The <span class="headline-highlight">client&#x27;s guide</span> to the Webflow Editor</h1>
+      <h2 class="h2-hero">How to use this site</h2>
+      <div class="paragraph_guide-large w-richtext">
+        <p>Help your clients get up to speed with the Webflow Editor fast. Just:</p>
+        <ol role="list">
+          <li data-new-link="true">
+            <a href="https://webflow.com/website/The-clients-guide-to-the-Webflow-Editor">Clone the site</a>
+          </li>
+          <li data-new-link="true">Update its <a href="#">styles</a> and content to match your brand (or your client&#x27;s, if you&#x27;d like)</li>
+          <li>Update the form to direct to your email</li>
+          <li>Delete this section</li>
+          <li>Send to your client(s)</li>
+        </ol>
+      </div>
+    </div>
+    <div id="hero" class="dark-section-wrapper preface">
+      <div class="column-wrapper">
+        <h1 id="title" class="h1-large">Managing your website</h1>
+        <div class="paragraph_guide-large w-richtext">
+          <p>This guide explains how you can manage your website using its built-in content management system (CMS). </p>
+          <p>The guide features 3 sections:</p>
+          <ol role="list">
+            <li data-new-link="true">
+              <a href="#getting-started">Getting started</a><br>Logging in to your CMS—and getting back to it.
+            </li>
+            <li data-new-link="true">
+              <a href="#cms">Knowing your CMS</a><br>An overview of your CMS&#x27;s features and sections.
+            </li>
+            <li data-new-link="true">
+              <a href="#writing-editing">Creating and managing your content</a><br>How to create and edit your site&#x27;s content.
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="column-wrapper form">
+        <div class="w-form">
+          <form id="email-form" name="email-form" data-name="Email Form" method="get" class="form-4" data-wf-page-id="632ff0c7692e31ffe94d4e70" data-wf-element-id="30b4ea08-0de2-dd33-bfd5-036383e7a121">
+            <h2 id="form" class="form-header">Need a hand?</h2>
+            <p class="paragraph_guide-large">Let me know what you need, or need to know.</p><label for="name" class="field-label">Your name?</label><input type="text" class="text-field-3 _w-input w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name" required=""><label for="email" class="field-label">Your email?</label><input type="email" class="text-field-3 _w-input w-input" maxlength="256" name="email" data-name="Email" placeholder="" id="email" required=""><label for="field" class="field-label">What&#x27;s on your mind?</label><textarea id="field" name="field" maxlength="5000" required="" data-name="field" placeholder="" class="text-field-3 _w-input w-input"></textarea><input type="submit" value="Submit" data-wait="Please wait..." class="submit-button w-button">
+          </form>
+          <div class="success-message w-form-done">
+            <div class="text-block-66">Thanks! I&#x27;ll get back to you ASAP.</div>
+          </div>
+          <div class="error-message w-form-fail">
+            <div class="text-block-2">Oops! Something went wrong. Try again?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="getting-started" class="light-section-wrapper">
+      <div class="main-content-wrapper w-richtext">
+        <h2>Getting started</h2>
+        <figure style="padding-bottom:56.206088992974244%" class="w-richtext-align-fullwidth w-richtext-figure-type-video">
+          <div><iframe allowfullscreen="true" frameborder="0" scrolling="no" src="https://www.youtube.com/embed/ognLnWoIl8c"></iframe></div>
+        </figure>
+        <p>Taking control of your beautiful new website starts with accessing its built-in content management system (CMS for short). And that process usually starts with an email from your website’s designer. </p>
+        <p>It probably looks a bit like this: </p>
+        <figure class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/editor-invite-email.webp" alt="The invitation to edit email"></div>
+          <figcaption><em>You should&#x27;ve received this email inviting you to your CMS.</em></figcaption>
+        </figure>
+        <p>When you click that button, you’ll be taken to your website’s CMS — which, at first, will look just like your new website. Except now, you should see a grey bar across the bottom, with a simple form.</p>
+        <figure class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/logging-into-editor.webp" alt="The login screen for the Editor"></div>
+          <figcaption>‍<em>To log into your CMS later, just enter the email and password you defined when you first created your account.</em></figcaption>
+        </figure>
+        <p>Then, just fill in the required fields to create your account, and log in.</p>
+        <figure class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/editor-panel-collapsed.webp" alt="Once you&#x27;re logged in, the control panel sits at the bottom of your site"></div>
+          <figcaption>‍<em>Once you&#x27;re logged in, you&#x27;ll see your website, but with a new bar along the bottom, where you can manage your pages and Collections.</em></figcaption>
+        </figure>
+        <p>Now, your content management system should look <em>just like</em> your website — except there’s a toolbar with two browser-like tabs labeled <strong>Pages</strong> and <strong>Collections</strong>, plus a series of icons. I&#x27;ll explain all that below.</p>
+        <p>For now, <strong>take a moment to bookmark this page</strong> so you can easily return to it later. In most browsers, you can bookmark a page by holding Command/Control + B.</p>
+        <p>Otherwise, you can always return to your site’s content management system by simply typing the URL, then adding <strong>/?edit</strong> to the end. </p>
+        <p>So if your website’s URL is <strong>yourwebsite.com</strong>, just go to <strong>yourwebsite.com/?edit</strong> to log in and start editing.</p>
+        <p>When you return to your site later, you may see a little pencil icon in the lower right, which you can click to hop into your CMS. Rest assured that <em>only those with access to the CMS will see this icon</em>!</p>
+        <p>With the basics out of the way, let&#x27;s dig into the CMS itself.</p>
+      </div>
+      <div class="aside-wrapper w-richtext">
+        <h4>What&#x27;s a CMS?</h4>
+        <p>In the world of web design, CMS stands for <em>content management system</em>, and as the name suggests, it&#x27;s a system for managing the content of your website. </p>
+        <p>CMSs were invented for two reasons: </p>
+        <ol role="list">
+          <li>To help &quot;non-technical&quot; people maintain their websites</li>
+          <li>To help everyone publish new content within a consistent design, anytime</li>
+        </ol>
+        <h4>What your CMS can do</h4>
+        <p>Your CMS allows you to edit most any existing content on your website, including text (or &quot;copy&quot;), images, buttons, links, etc. </p>
+        <p>It also allows you to create some new pages and blog posts through Collections. </p>
+        <h4>What your CMS can&#x27;t do</h4>
+        <p data-new-link="true">If you need a new page on your site that doesn&#x27;t fit one of your Collections, <a href="#email-form">contact me</a>!</p>
+      </div>
+    </div>
+    <div id="cms" class="light-section-wrapper">
+      <div class="main-content-wrapper w-richtext">
+        <h2>Getting to know your CMS</h2>
+        <p>Now that you’ve created an account for your site’s CMS and know how to get back in to it anytime, let’s get to know the interface itself. </p>
+        <figure class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/labeled-editor-panel.webp" alt="The Editor panel with tabs for pages, Collections, account settings, help content, and a log out button"></div>
+        </figure>
+        <p>Let’s start with the two tabs on the left, Pages and Collections. These are your CMS’s two default tabs. You’ll be able to open more tabs, as you’ll see later, but these two will always be there for you. </p>
+        <h3>Pages tab</h3>
+        <figure style="padding-bottom:75%" class="w-richtext-align-fullwidth w-richtext-figure-type-video">
+          <div><iframe allowfullscreen="true" frameborder="0" scrolling="no" src="https://www.youtube.com/embed/lnV24z6pTfU"></iframe></div>
+        </figure>
+        <p>The Pages tab, as you might imagine, contains a list of your site’s pages. It’ll be divided into at least two sections, but probably more: </p>
+        <ol role="list">
+          <li><strong>Static pages</strong>: these are pages I built outside of your Collections. These may include your homepage, About page, Services/Products, Contact, etc. </li>
+          <li><strong>Collection pages</strong>: these are pages generated from your Collections, and can include things like a blog, help center, documentation, and more. These are listed with their Collection name, like so: Blog Pages. </li>
+        </ol>
+        <figure class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/editor-panel-open.webp" alt="The expanded Editor panel"></div>
+        </figure>
+        <h4>What you can do in the Pages tab</h4>
+        <p>The Pages tab allows you to do several things:</p>
+        <ol role="list">
+          <li><strong>Search for a page by name</strong>: Type a page’s name into the search bar to find it. <em>Note that this is exact-match search, and it only searches the page’s name, so you’ll need to enter a word or words that appear in the page’s name exactly. </em></li>
+          <li><strong>Go to a page</strong>: Just click the page name in the list to collapse the Pages tab and view the page. Once you’re there, you can add and edit content to your website just like writing in a text editor. </li>
+          <li><strong>Manage page settings</strong>: When you hover your cursor over a page in the list, you’ll see a button labeled “Settings” appear. There, you can manage vital page settings like SEO meta title and description, Open Graph title and description, and Open Graph image. </li>
+        </ol>
+        <h3>Managing page settings</h3>
+        <p>Because these page settings are so important for search and social, let’s dig a little deeper into what each of these settings actually means, and how you can make the most of them. </p>
+        <figure class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/page-settings.webp" alt="Page settings in the Editor"></div>
+        </figure>
+        <h4>SEO Settings</h4>
+        <p>SEO stands for “search engine optimization.” It’s the practice of building and improving websites in order to improve their chances of being found through search engines like Google, Bing, etc. </p>
+        <p>In each page’s settings, you can create and edit the following page-specific SEO settings: </p>
+        <ol role="list">
+          <li><strong>Meta title</strong>: A page’s title plays a <em>very</em> important role in its visibility and performance in search engines, both because it a) tells search engines what the page is about and b) is what search engine users will click on to reach your site. Be sure to include the types of words people use to describe your business in the title. Ideally, a page’s title should be about 55 to 60 characters long. <br><br><strong>Example</strong> If I were building a website for a San Francisco Bay Area lawn care company, I’d probably title my homepage “SF Bay Area Lawn Care.” Then I might have other pages like “Berkeley Lawn Care” and “El Cerrito Lawn Care.”<br><br></li>
+          <li><strong>Meta description</strong>: The description allows you to add a little more detail about your page (about 150 characters of it). It’s important for search, but not nearly as important as the title. </li>
+        </ol>
+        <p>The Search Result Preview sections shows you what the content you’ve entered will look like on a Google search results page. If any of your text gets cut off in the preview, you’ll want to trim your text to fit. </p>
+        <h4><strong>Open Graph (OG) settings</strong></h4>
+        <p>Open Graph settings are very similar to SEO settings, except that they’re used by social networks like Facebook, Twitter, and LinkedIn. If you use any of these social networks, you’ve seen Open Graph at work many times.</p>
+        <p>In most cases, you can just tick the checkbox to use the same content as your SEO title and description. But feel free to customize it, if you’d like. </p>
+        <p>Open Graph also allows you to specify an image to be displayed along with your title and description. </p>
+        <figure class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/OG-card.webp" alt="An Open Graph card, showing image, title, description, and page URL"></div>
+          <figcaption>‍<em>‍An example of Open Graph image, title, and description on Facebook. </em></figcaption>
+        </figure>
+        <h3>Collections tab</h3>
+        <figure style="padding-bottom:56.206088992974244%" class="w-richtext-align-fullwidth w-richtext-figure-type-video">
+          <div><iframe allowfullscreen="true" frameborder="0" scrolling="no" src="https://www.youtube.com/embed/QcdJ6eIykP4"></iframe></div>
+        </figure>
+        <p>The Collections tab is very similar to the Pages tab, but it <em>only</em> lists your Collection content — the stuff I created with the CMS. </p>
+        <p>When you click on a Collection, you’ll be taken to a new tab with a list of all the items in the Collection. </p>
+        <figure class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/collection-item-list.webp" alt="Tab for Collection items"></div>
+          <figcaption>‍<em>‍ Like the Pages tab, there’s a search bar you can use to find items by name.</em></figcaption>
+        </figure>
+        <p>To start creating a new item within this Collection, click the <strong>+ New</strong> button and fill out the item’s various fields, paying close attention to the help text and other requirements for each.   </p>
+        <figure class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/item-view-labeled.webp" alt="The Editor&#x27;s item view, with back button, preview button, and changelog"></div>
+        </figure>
+        <p>What you see within an individual Collection item will change based on the structure of the Collection it belongs to, but you’ll see several elements over and over again: </p>
+        <ol role="list">
+          <li><strong>Back button</strong>: Click this to go back to the list of items in this Collection</li>
+          <li><strong>View item button</strong>: This light grey button collapses the CMS to show you the item you’re currently viewing right on your live website. If you’d like, you can edit its contents there instead of in this panel. </li>
+          <li><strong>Status</strong>: Shows the current status of the item you’re viewing. Statuses include Published, Not Published, and Draft. </li>
+          <li><strong>Draft checkbox</strong>: Tick this checkbox if you aren’t finished creating or editing the current item. <em>Anything that isn’t marked as a draft will be published when someone clicks the Publish button</em>! </li>
+          <li><strong>Changelog</strong>: As you make changes within your CMS, it will record the number of items and pages you’ve changed until you click <strong>Publish</strong>. You can click on the changelog to see a list of items and pages that have unpublished changes, along with who made them, if you have fellow CMS users. </li>
+          <li><strong>View Site</strong>: Click this to view your website. You can use any links on your website to move between pages in this view.</li>
+        </ol>
+        <p>The <strong>Save</strong> and <strong>Publish</strong> buttons should be fairly self-explanatory. Just note that you’ll need to click <strong>Publish</strong> twice to confirm your action. </p>
+        <h4>How publishing works in your CMS</h4>
+        <p>Every time you click <strong>Publish</strong> in your CMS, your <em>whole website</em> gets republished. If you know that others are working on the site when you&#x27;re ready to publish, you may want to ask them if they&#x27;re ready for their changes to go live.</p>
+        <h3>Forms tab</h3>
+        <p>Your CMS <em>may</em> include a Forms tab. If it does, you’ll be able to view some basic information from forms people have submitted, but it’s most useful as a place for you to download the complete form data. In the downloaded CSV file (a format that works with all the major spreadsheet apps), you’ll be able to see all the submitted info.</p>
+        <figure class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/forms-tab.webp" alt="The forms tab lists submissions by date"></div>
+        </figure>
+      </div>
+      <div class="aside-wrapper w-richtext">
+        <h4>What about those icons?</h4>
+        <p>After the Pages and Collections tabs, you’ll see three icons. From the left, these are:</p>
+        <h5>Account</h5>
+        <p>Shows information about your CMS account, including the associated email, and your photo, if you’ve uploaded one. If you haven’t, you can upload one here.</p>
+        <h5>Help</h5>
+        <p>Provides answers to a few common questions about using the CMS.</p>
+        <h5>Log out </h5>
+        <p>Logs you out of the CMS to view your site as anyone else would.</p>
+        <h4>What&#x27;s SEO?</h4>
+        <p>SEO stands for &quot;search engine optimization&quot; and, simply put, it&#x27;s a group of practices designed to ensure that people can find your content when they search for topics you write about on Google, Bing, and other search engines. </p>
+        <p>Your CMS allows you to customize the &quot;meta title&quot; and &quot;meta description&quot; — two of the most important SEO elements — for every page and Collection on your website.</p>
+        <p>‍</p>
+      </div>
+    </div>
+    <div id="writing-editing" class="light-section-wrapper">
+      <div class="main-content-wrapper w-richtext">
+        <h2>Creating and managing content </h2>
+        <p>Your CMS gives you two ways to edit content that’s already on your site: </p>
+        <ol role="list">
+          <li>Right on your live web page</li>
+          <li>Within your Collection items tab </li>
+        </ol>
+        <p>I&#x27;ll walk you through both (extremely simple) ways to edit, starting with on-page editing. </p>
+        <h3>On-page editing</h3>
+        <p>Editing right on the page is pretty intuitive with your CMS, but there are a few things to know. </p>
+        <h4>Editing text</h4>
+        <figure style="max-width:undefinedpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/on-page-editing.webp" alt="Editable areas display a pencil icon in the upper right"></div>
+          <figcaption>If you see the pencil icon in the upper right, the element&#x27;s editable.</figcaption>
+        </figure>
+        <p>When you first log in to your CMS, you’ll see your live website with the CMS panel (the grey bar) collapsed at the bottom of your screen. </p>
+        <p>If you see some text you want to edit, just hover your cursor over it. If a light grey outline with a pencil icon in the upper right appears, you can edit that content. Just click into the box and start typing! </p>
+        <p>Editing text works just like it does in Microsoft Word or Google Docs, but styling your text — bolding, italicizing, etc. — works just a little differently. (Though if you’ve used Medium, it’ll feel pretty familiar.) </p>
+        <figure style="max-width:undefinedpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/formatting-toolbar.webp" alt="Select text to show a toolbar with formatting options"></div>
+          <figcaption>Just select some text to reveal all your formatting options.</figcaption>
+        </figure>
+        <p>To style text, first select it. A grey toolbar will then pop up, giving you the following options:</p>
+        <ul role="list">
+          <li><strong>B</strong> to <strong>bold</strong></li>
+          <li><strong>I</strong> to <em>italicize</em></li>
+          <li><strong>Chain link icon</strong> to insert a link</li>
+          <li><strong>H1–H6</strong> to create the various levels of headings. The number indicates the level of importance of each heading, with H1 being most important, and H6 the least important. In the images in this section, the phrase “Content patterns” is an H2. Note that most pages only have one H1, so you probably won’t use that often.</li>
+          <li><strong>“</strong> to create a block quote. This is best used for lengthy quotations. </li>
+        </ul>
+        <p>You can also style text with the following key combinations: </p>
+        <ul role="list">
+          <li>Command/Control + B to <strong>bold</strong></li>
+          <li>Command/Control + I to <em>italicize</em> </li>
+          <li>Command/Control + K to insert a link</li>
+        </ul>
+        <p>To use a key combination, just press and hold Command (on Mac) / Control (on Windows), then press the letter key (B, I, or K), then release. </p>
+        <p data-new-link="true"><strong>Note</strong>: Sometimes, a text field will give you fewer options than those listed above. This was likely done intentionally, but if you need more styling options, <a href="#email-form">let me know</a>! </p>
+        <h4>Inserting links</h4>
+        <p>Your CMS allows you to add a variety of link types to achieve various different functionalities. </p>
+        <figure style="max-width:undefinedpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/linking-toolbar.webp" alt="The toolbar for adding and managing links"></div>
+          <figcaption>Adding links takes a couple of clicks, but gives you a host of options.</figcaption>
+        </figure>
+        <p>When you go to insert a link, the toolbar defaults to entering a URL to link to, but if you click the link icon on the left, you can select from several other options: </p>
+        <ol role="list">
+          <li><strong>External</strong>: links a visitor to another page on the web, often on another website, but you can also use this to link to another page of your own site.</li>
+          <li><strong>Page</strong>: links a visitor to another page of your site. You’ll see a dropdown list of your site’s pages listed here.</li>
+          <li><strong>Section</strong>: links a visitor to another section of the same page they’re currently viewing. You’ll see a dropdown list of your page’s sections listed here. </li>
+          <li><strong>Email</strong>: links a visitor to their default email app so they can write an email to the address you specify. </li>
+          <li><strong>Tel</strong>: allows a visitor to place a call to the phone number you specify. This is especially useful for people visiting your site from a mobile device. </li>
+        </ol>
+        <p>Each link type offers its own customization options. Click the gear icon to see what’s available for your current link type. </p>
+        <h4>More text editing options</h4>
+        <p>Some areas of text on your website (typically longer passages) will allow for additional options. </p>
+        <figure style="max-width:undefinedpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/adding-lists-and-media.webp" alt="Create a new line to show options for inserting images, video, rich media, and lists"></div>
+          <figcaption>Hit return (or enter) and click the + icon to add images, video, rich media, or a simple list.</figcaption>
+        </figure>
+        <p>When you press enter/return to start a new paragraph, you may see a small + icon. Click it to open the toolbar and see the following options. </p>
+        <figure class="w-richtext-align-center w-richtext-figure-type-image">
+          <div><img src="../images/image-icon.webp" alt="The image icon"></div>
+          <figcaption>Image</figcaption>
+        </figure>
+        <p>Allows you to upload an image. </p>
+        <figure class="w-richtext-align-center w-richtext-figure-type-image">
+          <div><img src="../images/video-icon.webp" alt="The video icon"></div>
+          <figcaption>Video</figcaption>
+        </figure>
+        <p>Allows you to insert a video. This must be a video hosted on a platform like YouTube or Vimeo — you can’t upload a video file from your computer. </p>
+        <figure class="w-richtext-align-center w-richtext-figure-type-image">
+          <div><img src="../images/rich-media.webp" alt="The rich media icon"></div>
+          <figcaption>&quot;Rich media&quot;</figcaption>
+        </figure>
+        <p>Allows you to embed “rich media,” <strong>via a link</strong>. There are all sorts of objects you can embed using this feature, but here a few of the most popular: </p>
+        <ul role="list">
+          <li>Imgur albums</li>
+          <li>Google maps</li>
+          <li>Scribd books</li>
+          <li>SlideShare presentations</li>
+          <li>Giphy GIFs</li>
+          <li>SoundCloud audio </li>
+        </ul>
+        <figure class="w-richtext-align-center w-richtext-figure-type-image">
+          <div><img src="../images/bulleted-list.webp" alt="The bulleted list icon"></div>
+          <figcaption>Bulleted list</figcaption>
+        </figure>
+        <p>Allows you to add a bulleted list.</p>
+        <figure class="w-richtext-align-center w-richtext-figure-type-image">
+          <div><img src="../images/numbered-list.webp" alt="The numbered list icon"></div>
+          <figcaption>Numbered list</figcaption>
+        </figure>
+        <p>Allows you to add a numbered list.<br></p>
+        <p>Everything you’ve just read about editing text on the page also applies when you’re in the Items tab of the CMS.</p>
+        <h4>Editing buttons</h4>
+        <figure style="max-width:undefinedpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/editing-buttons.webp" alt="To edit a button&#x27;s text or link, click the gear icon, then the appropriate option"></div>
+          <figcaption>Want to edit a button&#x27;s text or link destination? Just hover over it and look for the gear icon.</figcaption>
+        </figure>
+        <p>You can also edit buttons in the CMS. Just hover your cursor over the button and look for a gear icon in the upper right. Click the gear icon and you’ll see two options:</p>
+        <ol role="list">
+          <li><strong>Edit link settings</strong> lets you update the page the button takes viewers to. </li>
+          <li><strong>Edit text</strong> lets you change the text within the button.</li>
+        </ol>
+        <figure style="max-width:undefinedpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/edit-text-destination.webp" alt="Button with options for editing links and text"></div>
+        </figure>
+        <h4>Editing images</h4>
+        <figure style="max-width:undefinedpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/replacing-images.webp" alt="Editable images show the image icon in the upper right"></div>
+          <figcaption>Replacing images works just like buttons — just hover and look for an icon in the upper right!</figcaption>
+        </figure>
+        <p>You can also replace images on your site with the CMS. Just hover your cursor over the image you want to update, then click the picture icon. </p>
+        <p>This will open your computer’s file finder, where you can select any image you’d like. </p>
+        <p>Note: Sometimes, certain visual styles will automatically apply to the image you upload, so don’t be surprised if your image suddenly changes size, acquires a colored border or shadow, etc. </p>
+        <h3>Managing Collection items in bulk</h3>
+        <figure style="max-width:undefinedpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/bulk-actions.webp" alt="Click the &quot;Select&quot; button to bulk manage Collection items"></div>
+          <figcaption>Click the Select... button to manage Collection items in bulk.</figcaption>
+        </figure>
+        <p>Sometimes you&#x27;ll want to delete, archive, or publish several items all at the same time. In those moments, you can click the <strong>Select...</strong> button to change the status of multiple items, just like in Gmail. This can be especially handy if you want to publish multiple connected connected pieces (such as a series of articles) all at once. </p>
+        <h3>Creating new content</h3>
+        <p>You can use your CMS to produce new content through any of your Collections, so it’s super easy to create a new blog post, menu item, product or service page — whatever your Collections enable! </p>
+        <figure style="max-width:undefinedpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/creating-new-content.webp" alt="Creating a new Collection item"></div>
+        </figure>
+        <p>This should all be fairly intuitive, and the labels and descriptive text for each field should also help you out immensely. But there are a few things worth calling out:</p>
+        <h4>The Name field</h4>
+        <p>The Name field is a default for all Collections, and it typically does triple-duty as: </p>
+        <ol role="list">
+          <li>The item’s title on your website</li>
+          <li>The source of the item’s URL on the web</li>
+          <li>The item’s title within the CMS</li>
+        </ol>
+        <p>There may, however, be separate fields for items 1 and 2.</p>
+        <h4>Image fields</h4>
+        <p>Anywhere you see “Drag &amp; Drop Image Here,” you’re looking at an image field. You can either drag an image from another app on your computer into the CMS, or click the “Upload an Image” link to upload it through your computer’s file management system. </p>
+        <p><strong>Note that your CMS can’t handle image files over 4MB.</strong> If your file is bigger than that, you can use Photoshop or an online tool like <a href="https://tinypng.com/" target="_blank">TinyPNG</a> or <a href="https://compressor.io/" target="_blank">Compressor</a> to get your files under that threshold. Just keep in mind that the larger the image, the longer it takes to load, so try to get your images as small as possible without losing quality. </p>
+        <p>It’s also up to you to ensure that you have the right to use any images on your website.</p>
+        <h4>Reference fields</h4>
+        <p>If you see any fields with a magnifying glass icon on the right, your Collection has a Reference or Multi-Reference field. This allows you to import content from one Collection into another, which can be used to power things like categories and tags (common blog features). </p>
+        <p>To use a Reference field, just click into the field and selected the right reference for your new item. If you <em>don’t</em> see the right reference for your new page, you may need to create a new item in the Collection this field references. </p>
+        <p>This may be explained in the help text for your Collection item, but if it isn’t, contact me for help. </p>
+        <h4>Option field</h4>
+        <p data-new-link="true">The Option field works similarly to References, but isn’t connected to another Collection item. So you can just click into the field and pick the right option for the new content. If you need a new Option to fit your content, <a href="#email-form">contact me</a>. </p>
+        <h4>Video field</h4>
+        <p>The video field lets you add a video to your new content. It works by pulling your content from a public video host like YouTube or Vimeo, so you can’t just upload a video file. If you have a video file you want on your site, upload it to YouTube or another service, then just copy and paste the URL into the Video field. </p>
+        <p><em>Note: you don’t need the embed code generated by services like YouTube, just the URL.</em></p>
+        <h4>Switch field</h4>
+        <p>The Switch field is a simple on/off, yes/no toggle that enables or disables functionality on your website. If you’re not sure how this works on your site, ask me. </p>
+        <h4>Color field</h4>
+        <p>The Color field allows you to add a splash of color to your content in a way that your site’s designer defines. The field itself allows you to choose a color visually, from the picker, or to enter what’s called a “hex code” — <a href="https://en.wikipedia.org/wiki/Web_colors">a numeric representation of the color</a>. </p>
+        <figure style="max-width:undefinedpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+          <div><img src="../images/color-picker.webp" alt="The color field"></div>
+        </figure>
+        <p>Using the color picker can take a little getting used to at first, but you’ll get the hang of it quickly. The bar on the left represents the whole spectrum of available colors — clicking here will update the color swatch in the middle to a range of tones in the area you clicked. The middle area is where you’ll choose the exact color you want. The bar on the right represents the color’s <em>opacity</em>, which controls how transparent the color is.</p>
+        <p>If you&#x27;ll be working with color on your site a lot, you might want to grab the Chrome / Firefox plugin <a href="http://www.colorzilla.com/chrome/">ColorZilla</a>, which essentially lets you copy any color you see on the web to then paste into the color picker. </p>
+        <h3>Managing your editorial workflow </h3>
+        <p>If you’re the only person working with the CMS on your website, you’ll get along just fine writing, editing, and publishing, all within the CMS. </p>
+        <p>But if your writing and editing team is larger than one, you’ll probably want to use a different tool for writing, sharing, editing, and collaborating on content. </p>
+        <p>Why? Well, there are two big reasons: </p>
+        <ol role="list">
+          <li>Most writing tools offer more detailed collaboration and editing options, like track changes and commenting </li>
+          <li>It&#x27;s always good to have backup copies of anything you publish on your website (just in case someone accidentally deletes something)</li>
+        </ol>
+        <h4>Recommended writing and editing tools</h4>
+        <p>Here are a few writing tools that offer a great writing experience, easy collaboration with others, and work well with your CMS, in that you won’t lose formatting when you copy and paste content from them into the CMS. </p>
+        <ul role="list">
+          <li>
+            <a href="http://docs.google.com">Google Docs</a>
+          </li>
+          <li>
+            <a href="http://quip.com">Quip</a>
+          </li>
+          <li>
+            <a href="http://evernote.com">Evernote</a>
+          </li>
+          <li>
+            <a href="http://draftin.com">Draft</a>
+          </li>
+        </ul>
+        <p>I do not recommend using Microsoft Word.</p>
+        <h4>Handy key shortcuts</h4>
+        <p>Writing gets a lot faster when you can keep your fingers on the keys. These key combinations help you do that: </p>
+        <ul role="list">
+          <li>Command/Control + B to <strong>bold</strong></li>
+          <li>Command/Control + I to <em>italicize</em> </li>
+          <li>Command/Control + K to insert a link</li>
+          <li>Command/Control + Z to undo what you just did</li>
+        </ul>
+        <p>Use Command on Macs, and Control on Windows.</p>
+        <p>Google Workspace&#x27;s Learning Center - https://support.google.com/a/users/answer/9389764</p>
+        <p>‍</p>
+      </div>
+      <div class="aside-wrapper w-richtext">
+        <h4>Pro tip: write longer content outside your CMS</h4>
+        <p>For shorter content, you can write and edit right on your live website whenever you&#x27;d like. </p>
+        <p>But for longer content that needs a few extra eyes, it&#x27;s often better to write, collaborate, and edit in a separate app, and then paste your content into the CMS when you’re ready to publish. </p>
+        <p>This makes collaboration easier, and Google Docs works particularly well because its heading and formatting options carry right over to the CMS.</p>
+        <p><strong>However</strong>, after pasting your Google Docs content into the CMS, be sure to delete and re-upload your images to ensure they&#x27;ve loaded into your website properly.</p>
+        <p>You can download images from a Google Doc by going to:</p>
+        <p>File &gt; Download as &gt; Web Page</p>
+        <p>Double-click the downloaded ZIP file to unpack it, and you should see a folder labeled &quot;Images.&quot;</p>
+        <h4>Editing Collection text</h4>
+        <p>If you edit content that comes from one of your CMS Collections, all other instances of that same text will automatically update across your site. </p>
+        <p>For example, if you edit the title of a blog post on your blog’s index page, the title will update on the individual blog post’s page, as well as anywhere else it appears on your site.</p>
+        <h4>Editing URLs</h4>
+        <p>To continue with the above example, let&#x27;s say you edited a blog post&#x27;s title, and now you realize you want to update the URL to match the new title. </p>
+        <p>Good thinking, and the good news is that you can also edit the URL in the CMS. </p>
+        <p><strong>However</strong>, this will break any links to the old URL! </p>
+        <p>Don&#x27;t worry: I can fix this, but it&#x27;s best to let me know <em>before</em> you edit the URL.</p>
+        <p>‍</p>
+      </div>
+    </div>
+    <div class="dark-section-wrapper">
+      <div class="div-block-25">
+        <div class="rte_todo-dev-block w-richtext">
+          <h1>TODO:</h1>
+          <p>- [ ] Monthly Magazine</p>
+          <p>You can write any valid HTML like:</p>
+          <p>&lt;span id=&quot;test&quot; class=&quot;kool-class&quot; style=&quot;color: red;&quot; fs-test-element=&quot;test&quot;&gt;This is a cool custom HTML string.&lt;/span&gt;</p>
+          <p>And it will be parsed and rendered.</p>
+          <p>‍</p>
+          <p>Additionally, you can disable an entire line from being parsed by adding <strong>&lt;!-- fs-richtext-ignore --&gt;</strong> at the beginning of it:</p>
+          <p><strong>&lt;!-- fs-richtext-ignore --&gt; </strong>&lt;span id=&quot;test&quot; class=&quot;kool-class&quot; style=&quot;color: red;&quot; fs-test-element=&quot;test&quot;&gt;This is a cool custom HTML string.&lt;/span&gt;</p>
+          <p> </p>
+          <p>&lt;fs-test-element&gt;test&lt;/fs-test-element&gt;</p>
+          <ul role="list">
+            <li>[ ] finish Admin Guide Content</li>
+            <li>[ ] Admin Guide Styling</li>
+            <li>[ ] rich text styling w/ attributes</li>
+          </ul>
+          <p>‍</p>
+          <p>{{test}}</p>
+          <p>‍</p>
+          <div class="w-embed">
+            <li>
+              <ul>List HTML</ul>
+              <ul>List Item 2 HTML</ul>
+            </li>
+          </div>
+          <p>‍</p>
+          <p><br></p>
+          <ul role="list">
+            <li>50th Anniversary              Pictures need formatting into gallery</li>
+            <li>Building Body of Christ  Refine page content/pictures    </li>
+            <li>Our Faith                          Can we have a sub-menu for the pages under this landing page?</li>
+            <li>Athletics                            Goes to Bible Study page, not Youth Athletics</li>
+            <li>Sunday School                 Remove first picture</li>
+            <li>Bible Study                       Refine  page</li>
+            <li>Choir                                 Refine page</li>
+            <li>Family Wellness              Text needs formatting</li>
+            <li>Food Pantry                     Should be under Adult Ministries – found it under Upcoming Events</li>
+            <li>Parish History                  Missing content – goes directly to 50th anniversary content</li>
+          </ul>
+          <ul role="list">
+            <li>Mom’s Bible Study          REMOVE page/tab – we put this under Bible Study instead of a separate page/tab</li>
+            <li>Greek Festival                  Text on main page needs to white – unreadable as is</li>
+          </ul>
+          <p><br></p>
+          <p><br></p>
+          <p>LB’s list</p>
+          <ul role="list">
+            <li>https://support.google.com/a/users/answer/9389764</li>
+            <li>learning hub - for google workspace</li>
+            <li>calendar</li>
+            <li>event</li>
+            <li>magazine -newsletter</li>
+            <li>Our faith grid</li>
+            <li>Link back to to old site (js to swap with new)</li>
+          </ul>
+          <ul role="list">
+            <li>Fix mobile responsive issue on iOS <a href="https://discourse.webflow.com/t/unwanted-space-caused-by-fixed-positioning/208287">https://discourse.webflow.com/t/unwanted-space-caused-by-fixed-positioning/208287</a>
+            </li>
+            <li>vanco - one time and recurring </li>
+            <li>survey monkey - stewardship</li>
+            <li>Hard copy changes - renee quick</li>
+            <li>Office staff. Fix</li>
+            <li>golf fix img</li>
+            <li>Headings standardized</li>
+            <li>vanco - one time and recurring </li>
+            <li>survey monkey - stewardship</li>
+            <li>Father Nico’s Monthly Message??? - no</li>
+            <li>Poke George regarding cvresurrection dropbox account</li>
+          </ul>
+          <p><br></p>
+          <p>Gold translucent to teal - give page</p>
+          <p><br></p>
+          <p>Stewardship - text to single page followed by survey monkey</p>
+          <p>Style button - within survey monkey</p>
+          <p>Stock donator embed</p>
+          <p><br></p>
+          <p>Vanco optional and required both in red fix.</p>
+          <p>Greek Festival favicon</p>
+          <p>301 redirects</p>
+          <p>‍</p>
+        </div>
+        <div class="w-form">
+          <form id="email-form-2" name="email-form-2" data-name="Email Form 2" method="get" data-wf-page-id="632ff0c7692e31ffe94d4e70" data-wf-element-id="4e8d4708-b8ee-e8e5-3508-e038a2e41809"><label for="name-2">TODO (form w/ checkbox | uncheck = complete)<br><br></label><label class="w-checkbox"><input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-2">50th Anniversary              Pictures need formatting into gallery</span></label><label class="w-checkbox"><input type="checkbox" name="Checkbox-3" id="Checkbox-3" data-name="Checkbox 3" checked="" class="w-checkbox-input"><span class="w-form-label" for="Checkbox-3">Greek Festival                  Text on main page needs to white – unreadable as is</span></label></form>
+          <div class="w-form-done">
+            <div>Thank you! Your submission has been received!</div>
+          </div>
+          <div class="w-form-fail">
+            <div>Oops! Something went wrong while submitting the form.</div>
+          </div>
+        </div>
+        <div class="w-form">
+          <form id="email-form-2" name="email-form-2" data-name="Email Form 2" method="get" data-wf-page-id="632ff0c7692e31ffe94d4e70" data-wf-element-id="3829979b-8b8a-baf7-fb7c-02a52c3a40c3"><label class="w-checkbox"><input type="checkbox" name="Checkbox-2" id="Checkbox-2" data-name="Checkbox 2" checked="" class="w-checkbox-input"><span class="w-form-label" for="Checkbox-2">Mom’s Bible Study          REMOVE page/tab – we put this under Bible Study instead of a separate page/tab</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-3" name="checkbox-3" data-name="Checkbox 3" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-3">Parish History                  Missing content – goes directly to 50th anniversary contentkbox</span></label></form>
+          <div class="w-form-done">
+            <div>Thank you! Your submission has been received!</div>
+          </div>
+          <div class="w-form-fail">
+            <div>Oops! Something went wrong while submitting the form.</div>
+          </div>
+        </div>
+        <div class="w-form">
+          <form id="email-form-2" name="email-form-2" data-name="Email Form 2" method="get" data-wf-page-id="632ff0c7692e31ffe94d4e70" data-wf-element-id="0f092fa2-3be6-767d-d073-3daaea09d51b"><label class="w-checkbox"><input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-2">Food Pantry                     Should be under Adult Ministries – found it under Upcoming Events</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-2">Family Wellness              Text needs formatting</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-2">Choir                                 Refine page</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-4" name="checkbox-4" data-name="Checkbox 4" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-4">Sunday School                 Remove first picture</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-4" name="checkbox-4" data-name="Checkbox 4" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-4">Building Body of Christ  Refine page content/pictures                   Remove first picture</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-5" name="checkbox-5" data-name="Checkbox 5" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-5">Our Faith                          Can we have a sub-menu for the pages under this landing page?                    Refine  page</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-4" name="checkbox-4" data-name="Checkbox 4" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-4">Athletics                            Goes to Bible Study page, not Youth Athletics</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-6" name="checkbox-6" data-name="Checkbox 6" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-6">Style button - within survey monkey                         Can we have a sub-menu for the pages under this landing page?                    Refine  page</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox">map contact us</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-7" name="checkbox-7" data-name="Checkbox 7" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-7">magazine cms cleanup</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-8" name="checkbox-8" data-name="Checkbox 8" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-8">magazine dropbox link cleanup - 2 vers</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-9" name="checkbox-9" data-name="Checkbox 9" checked="" class="w-checkbox-input"><span class="w-form-label" for="checkbox-9">Bible Study                       Refine  page</span></label></form>
+          <div class="w-form-done">
+            <div>Thank you! Your submission has been received!</div>
+          </div>
+          <div class="w-form-fail">
+            <div>Oops! Something went wrong while submitting the form.</div>
+          </div>
+        </div>
+      </div>
+      <div class="kool-class"></div>
+    </div>
+  </div>
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6259a92a800588a137655151" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="../js/webflow.js" type="text/javascript"></script>
+  <!-- Button element
+<button data-feedbackfin-button>Feedback</button>
+TODO: deactivate on app engine
+ -->
+</body>
+</html>
